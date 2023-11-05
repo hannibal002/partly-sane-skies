@@ -23,7 +23,7 @@ public class ModChecker {
 
     public static void registerModCheckCommand() {
         new PSSCommand("modcheck", Collections.emptyList(), "Checks the mods in your mod folder if they are updated", (s, a) -> {
-            new Thread(ModChecker::run).start();
+            new Thread(ModChecker::loadModDataFromRepo).start();
         }).register();
     }
 
@@ -42,10 +42,6 @@ public class ModChecker {
             this.version = version;
             this.hash = hash;
         }
-    }
-
-    public static void run() {
-        loadModDataFromRepo();
     }
 
     public static void run2() {
@@ -114,8 +110,8 @@ public class ModChecker {
     }
 
     private static void loadModDataFromRepo() {
-        String userName = "PartlySaneStudios";
-        String branchName = "main";
+        String userName = "hannibal002";
+        String branchName = "mods";
 
         try {
             String url = "https://raw.githubusercontent.com/" + userName +
